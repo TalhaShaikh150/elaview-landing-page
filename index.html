@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elaview - Premium Advertising Spaces</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+       <style>
+         :root {
+           --black: #000000;
+        --white: #ffffff;
+        --gray-100: #f5f5f5;
+        --gray-200: #eaeaea;
+        --gray-500: #8a8a8a;
+        --gray-700: #4a4a4a;
+        --gray-900: #1a1a1a;
+        --accent: #000000; /* Using black as accent for monochromatic scheme */
+        --transition: all 0.3s ease;
+      }
+
+      * {
+           
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--gray-900);
+        line-height: 1.6;
+        background-color: var(--white);
+        font-weight: 400;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-weight: 600;
+        color: var(--black);
+        letter-spacing: -0.5px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--white);
+        border-bottom: 1px solid var(--gray-200);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 28px;
+        color: var(--black);
+        letter-spacing: -1px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 32px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--gray-700);
+        font-weight: 500;
+        transition: var(--transition);
+        font-size: 15px;
+      }
+
+      nav ul li a:hover {
+        color: var(--black);
+      }
+
+      .auth-buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+      }
+
+      .btn-outline {
+        border: 1px solid var(--black);
+        color: var(--black);
+        background: transparent;
+        margin-right: 15px;
+      }
+
+      .btn-outline:hover {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .btn-primary {
+        background: var(--black);
+        color: var(--white);
+        border: 1px solid var(--black);
+      }
+
+      .btn-primary:hover {
+        background: var(--gray-900);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 160px 0 100px;
+        background-color: var(--white);
+        text-align: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--gray-200);
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 24px;
+        line-height: 1.1;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 48px;
+        color: var(--gray-700);
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .hero-buttons .btn {
+        min-width: 180px;
+        padding: 14px 30px;
+      }
+
+      /* Stats Section */
+      .stats {
+        background-color: var(--white);
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .stats-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .stat-item {
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--black);
+      }
+
+      .stat-text {
+        font-size: 1rem;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Featured Spaces */
+      .featured-spaces {
+        padding: 80px 0;
+        background-color: var(--gray-100);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+
+      .section-title p {
+        color: var(--gray-500);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .spaces-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 30px;
+      }
+
+      .space-card {
+        background: var(--white);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        border: 1px solid var(--gray-200);
+      }
+
+      .space-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .space-image {
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .space-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .space-card:hover .space-image img {
+        transform: scale(1.03);
+      }
+
+      .space-details {
+        padding: 24px;
+      }
+
+      .space-title {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .space-specs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        color: var(--gray-500);
+        font-size: 0.9rem;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .space-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--black);
+        margin: 16px 0;
+      }
+
+      .space-actions {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-small {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      /* How It Works */
+      .how-it-works {
+        background-color: var(--white);
+        padding: 80px 0;
+      }
+
+      .steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .step {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .step-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--white);
+        color: var(--black);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 1.5rem;
+        border: 1px solid var(--gray-200);
+      }
+
+      .step h3 {
+        margin-bottom: 16px;
+        font-size: 1.2rem;
+      }
+
+      .step p {
+        color: var(--gray-700);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* CTA Section */
+      .cta {
+        padding: 100px 0;
+        text-align: center;
+        background-color: var(--black);
+        color: var(--white);
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--white);
+      }
+
+      .cta p {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--gray-200);
+        opacity: 0.9;
+      }
+
+      .cta .btn {
+        background: var(--white);
+        color: var(--black);
+        border: 1px solid var(--white);
+      }
+
+      .cta .btn:hover {
+        background: transparent;
+        color: var(--white);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--white);
+        color: var(--gray-700);
+        padding: 60px 0 30px;
+        border-top: 1px solid var(--gray-200);
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 200px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column h3 {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: var(--black);
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer-column ul li a {
+        color: var(--gray-500);
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.95rem;
+      }
+
+      .footer-column ul li a:hover {
+        color: var(--black);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid var(--gray-200);
+        color: var(--gray-500);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          padding: 20px 0;
+        }
+
+        nav ul {
+          margin: 20px 0;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        nav ul li {
+          margin: 0 15px 10px;
+        }
+
+        .hero {
+          padding: 140px 0 80px;
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .stats-content {
+          flex-direction: column;
+        }
+
+        .steps {
+          flex-direction: column;
+        }
+
+        .step {
+          margin-bottom: 40px;
+        }
+
+        .footer-content {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">Elaview</div>
+        <nav>
+          <ul>
+            <li><a href="#">Browse Spaces</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Success Stories</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="#" class="btn btn-outline">Log In</a>
+          <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Unlock Hidden Advertising Spaces</h1>
+        <p>
+          Connect landlords with prime advertising real estate to brands seeking
+          impactful visibility in cities.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">Find Your Ad Space</a>
+          <a href="#" class="btn btn-outline">List Your Property</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container stats-content">
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-text">Property Owners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$10M+</div>
+          <div class="stat-text">Revenue Generated</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-text">Cities Served</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Spaces -->
+    <section class="featured-spaces">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Advertising Spaces</h2>
+          <p>Discover premium locations for your brand's next campaign</p>
+        </div>
+        <div class="spaces-grid">
+          <div class="space-card">
+            <div class="space-image">
+              <img
+                src="https://elaview-frontend-w2gl.vercel.app/images/soho.png"
+                alt="SoHo Building Wall
+"
+              />
+            </div>
+            <div class="space-details">
+              <h3 class="space-title">SoHo Building Wall
+</h3>
+              <div class="space-specs">
+                <span>Size: 40ft × 60ft</span>
+                <span>Traffic: 25,000+ daily</span>
+              </div>
+              <div class="space-price">$5,000/week</div>
+              <div class="space-actions">
+                <a href="#" class="btn btn-outline">Save</a>
+                <a href="#" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-card">
+            <div class="space-image">
+              <img
+                src="https://elaview-frontend-w2gl.vercel.app/images/timesSquare.png"
+                alt="Times Square Window
+"
+              />
+            </div>
+            <div class="space-details">
+              <h3 class="space-title">Times Square Window
+</h3>
+              <div class="space-specs">
+                <span>50 x 60 ft</span>
+                <span>Ultra High Traffic</span>
+              </div>
+              <div class="space-price">$15,000/week</div>
+              <div class="space-actions">
+                <a href="#" class="btn btn-outline">Save</a>
+                <a href="#" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-card">
+            <div class="space-image">
+              <img
+                src="https://elaview-frontend-w2gl.vercel.app/images/brooklyn.png"
+                alt="Downtown Rooftop"
+              />
+            </div>
+            <div class="space-details">
+              <h3 class="space-title">Downtown Rooftop</h3>
+              <div class="space-specs">
+                <span>100 x 30 ft</span>
+                <span>Medium Traffic</span>
+              </div>
+              <div class="space-price">$6,200/week
+
+</div>
+              <div class="space-actions">
+                <a href="#" class="btn btn-outline">Save</a>
+                <a href="#" class="btn btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-title">
+          <h2>How Elaview Works</h2>
+          <p>Simple steps to unlock the value of your advertising space</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">1</div>
+            <h3>List Your Space</h3>
+            <p>
+              Create a listing with details and photos of your available
+              advertising space
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">2</div>
+            <h3>Get Matched</h3>
+            <p>
+              Our algorithm matches your space with brands looking for similar
+              visibility
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-icon">3</div>
+            <h3>Start Earning</h3>
+            <p>
+              Finalize the agreement and start generating revenue from your
+              unused space
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to Monetize Your Space?</h2>
+        <p>
+          Join hundreds of property owners who are generating passive income
+          with their unused spaces
+        </p>
+        <a href="#" class="btn">List Your Property Today</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Elaview</h3>
+            <p>
+              Transforming urban advertising by connecting property owners with
+              brands.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Browse Spaces</a></li>
+              <li><a href="#">List Your Property</a></li>
+              <li><a href="#">How It Works</a></li>
+              <li><a href="#">Success Stories</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Advertising Guidelines</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><a href="#">hello@Elaview.com</a></li>
+              <li><a href="#">+1 (555) 123-4567</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Elaview. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
